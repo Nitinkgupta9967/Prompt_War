@@ -3,7 +3,7 @@ uvicorn[standard]
 sqlalchemy
 asyncpg
 aioredis
-anthropic
+google-generativeai
 bleach
 slowapi
 sentence-transformers
