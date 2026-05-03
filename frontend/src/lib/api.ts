@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000';
+const API_URL = 'https://prompt-war-99378412040.europe-west1.run.app';
 
 export const api = axios.create({
   baseURL: API_URL,
