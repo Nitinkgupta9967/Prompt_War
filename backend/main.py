@@ -18,10 +18,9 @@ from rag import search_faqs, search_misinfo, get_ai_response
 app = FastAPI(title="VoteSmart India API")
 
 # CORS
-origins = os.environ.get("ALLOWED_ORIGINS", "http://localhost:3000").split(",")
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=origins,
+    allow_origins=["*"],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
