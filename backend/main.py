@@ -11,11 +11,18 @@ import uuid
 from typing import List, Optional
 from pydantic import BaseModel
 
-from database import get_db
+from database import get_db, init_db
 from models import ECIFaq, MisinfoKB, QuizQuestion, Constituency
 from rag import search_faqs, search_misinfo, get_ai_response
+from startup import seed_data
 
 app = FastAPI(title="VoteSmart India API")
+
+@app.on_event("startup")
+async def startup_event():
+    # Ensure database is initialized and seeded on cloud startup
+    await init_db()
+    await seed_data()
 
 # CORS
 app.add_middleware(
