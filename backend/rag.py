@@ -37,7 +37,11 @@ async def search_misinfo(query: str, db):
 
 async def get_ai_response(message: str, context: str):
     system_prompt = """You are VoteSmart AI, a helpful election guide for India. 
-    Use the provided context from the ECI to answer questions. If not in context, use general knowledge but advise verifying on eci.gov.in."""
+    Use the provided context from the ECI to answer questions. If not in context, use general knowledge but advise verifying on eci.gov.in.
+    
+    CRITICAL RULES:
+    1. End EVERY response with exactly this string: "Source: Election Commission of India (eci.gov.in)"
+    2. Always respond in the user's language — if the request is in Hindi, reply fully in Hindi. If in English, reply in English."""
 
     # 1. Try OpenRouter (Verified 2026 IDs)
     if or_client:

@@ -11,6 +11,13 @@ export const translations = {
     feature_quiz: "Civic Quiz",
     feature_lookup: "Find My Booth",
     feature_docs: "ECI Documents",
+    hero_title: "Empowering Every Indian Voter",
+    toolbox_title: "Your Voting Toolbox",
+    factcheck_title: "Combat Misinformation",
+    suggest_1: "How do I register to vote?",
+    suggest_2: "What documents do I need?",
+    suggest_3: "What is NOTA?",
+    suggest_4: "How does EVM work?",
   },
   hi: {
     title: "वोटस्मार्ट इंडिया",
@@ -24,6 +31,13 @@ export const translations = {
     feature_quiz: "नागरिक प्रश्नोत्तरी",
     feature_lookup: "मेरा बूथ खोजें",
     feature_docs: "ईसीआई दस्तावेज",
+    hero_title: "हर भारतीय मतदाता को सशक्त बनाना",
+    toolbox_title: "आपका वोटिंग टूलबॉक्स",
+    factcheck_title: "गलत सूचना से लड़ें",
+    suggest_1: "मैं वोट देने के लिए पंजीकरण कैसे करूँ?",
+    suggest_2: "मुझे किन दस्तावेजों की आवश्यकता है?",
+    suggest_3: "नोटा (NOTA) क्या है?",
+    suggest_4: "ईवीएम (EVM) कैसे काम करता है?",
   }
 };
 

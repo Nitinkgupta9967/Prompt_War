@@ -1,4 +1,5 @@
 import React from 'react';
+import Link from 'next/link';
 
 export default function Footer() {
   return (
@@ -15,12 +16,12 @@ export default function Footer() {
             </p>
           </div>
           
-          <div className="flex gap-8 text-sm text-slate-600">
-            <a href="#" className="hover:text-[var(--navy)]">ECI Portal</a>
-            <a href="#" className="hover:text-[var(--navy)]">NVSP</a>
-            <a href="#" className="hover:text-[var(--navy)]">Voter Helpline</a>
-            <a href="#" className="hover:text-[var(--navy)]">Privacy Policy</a>
-            <a href="#" className="hover:text-[var(--navy)]">Terms</a>
+          <div className="flex flex-wrap gap-8 text-sm text-slate-600 justify-center">
+            <a href="https://eci.gov.in" target="_blank" rel="noopener noreferrer" className="hover:text-[var(--navy)]">ECI Portal</a>
+            <a href="https://voters.eci.gov.in" target="_blank" rel="noopener noreferrer" className="hover:text-[var(--navy)]">NVSP</a>
+            <a href="tel:1950" className="hover:text-[var(--navy)]">Voter Helpline (1950)</a>
+            <Link href="/privacy" className="hover:text-[var(--navy)]">Privacy Policy</Link>
+            <Link href="/terms" className="hover:text-[var(--navy)]">Terms</Link>
           </div>
         </div>
         

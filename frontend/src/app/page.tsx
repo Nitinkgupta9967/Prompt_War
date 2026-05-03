@@ -17,7 +17,8 @@ import { useLanguage } from '@/lib/LanguageContext';
 
 const features = [
   { 
-    title: 'AI Election Guide', 
+    id: 'chat',
+    title: 'feature_chat', 
     desc: 'Ask any electoral question in your local language and get instant, verified answers from our AI assistant.',
     icon: MessageSquare,
     color: 'bg-blue-100 text-blue-600',
@@ -25,7 +26,8 @@ const features = [
     linkText: 'Explore'
   },
   { 
-    title: '2024 Timeline', 
+    id: 'timeline',
+    title: 'feature_timeline', 
     desc: 'Stay updated with critical dates for registration, nominations, and polling phases across all states and UTs.',
     icon: Calendar,
     color: 'bg-orange-100 text-orange-600',
@@ -33,7 +35,8 @@ const features = [
     linkText: 'View Calendar'
   },
   { 
-    title: 'Fact Check', 
+    id: 'factcheck',
+    title: 'feature_factcheck', 
     desc: 'Combat misinformation. Verify viral claims with official data sources and expert electoral insights.',
     icon: ShieldCheck,
     color: 'bg-green-100 text-green-600',
@@ -41,7 +44,8 @@ const features = [
     linkText: 'Verify News'
   },
   { 
-    title: 'Civic Quiz', 
+    id: 'quiz',
+    title: 'feature_quiz', 
     desc: 'Test your knowledge about the Indian Constitution and the electoral process through interactive challenges.',
     icon: Award,
     color: 'bg-red-100 text-red-600',
@@ -49,7 +53,8 @@ const features = [
     linkText: 'Start Quiz'
   },
   { 
-    title: 'Find My Booth', 
+    id: 'lookup',
+    title: 'feature_lookup', 
     desc: 'Locate your designated polling station on the map and get directions from your current location.',
     icon: MapPin,
     color: 'bg-purple-100 text-purple-600',
@@ -57,11 +62,12 @@ const features = [
     linkText: 'Locate Now'
   },
   { 
-    title: 'ECI Documents', 
+    id: 'docs',
+    title: 'feature_docs', 
     desc: 'Download essential forms, voter guides, and official handbooks directly from the Election Commission.',
     icon: FileText,
     color: 'bg-slate-100 text-slate-600',
-    link: '#',
+    link: 'https://eci.gov.in/voter/voter-guide/',
     linkText: 'Download'
   }
 ];
@@ -86,8 +92,8 @@ export default function Home() {
                 Official Electoral Awareness Portal
               </div>
               <h1 className="text-4xl md:text-6xl font-extrabold text-slate-900 leading-tight mb-6">
-                Empowering Every <br/>
-                <span className="text-[var(--saffron)]">Indian Voter</span>
+                {t.hero_title.split('Indian')[0]} <br/>
+                <span className="text-[var(--saffron)]">Indian {t.hero_title.split('Indian')[1]}</span>
               </h1>
               <p className="text-lg text-slate-600 mb-8 max-w-lg">
                 {t.hero_desc}
@@ -125,7 +131,7 @@ export default function Home() {
       <section className="py-20 bg-slate-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-sm font-bold text-[var(--navy)] uppercase tracking-widest mb-4">
-            Your Voting Toolbox
+            {t.toolbox_title}
           </h2>
           <p className="text-slate-500 max-w-2xl mx-auto mb-16">
             Access everything you need to be an informed participant in India&apos;s democracy. From AI guidance to official documentation.
@@ -134,7 +140,7 @@ export default function Home() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {features.map((feature, idx) => (
               <motion.div
-                key={feature.title}
+                key={feature.id}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ delay: idx * 0.1 }}
@@ -144,7 +150,7 @@ export default function Home() {
                 <div className={`p-3 rounded-xl ${feature.color} mb-6`}>
                   <feature.icon size={24} />
                 </div>
-                <h3 className="text-xl font-bold text-slate-900 mb-3">{feature.title}</h3>
+                <h3 className="text-xl font-bold text-slate-900 mb-3">{t[feature.title as keyof typeof t]}</h3>
                 <p className="text-slate-600 text-sm mb-6 flex-grow">{feature.desc}</p>
                 <Link href={feature.link} className="flex items-center gap-2 text-sm font-bold text-[var(--navy)] hover:gap-3 transition-all">
                   {feature.linkText}
@@ -184,7 +190,7 @@ export default function Home() {
                 <div className="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center">
                   <Calendar size={24} className="text-[var(--saffron)]" />
                 </div>
-                <span className="text-xs font-medium">Real-time Sync</span>
+                <span className="text-xs font-medium">Official ECI Data</span>
               </div>
             </div>
           </div>

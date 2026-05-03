@@ -8,18 +8,39 @@ const phases = [
   { phase: 1, date: "April 19, 2024", status: "COMPLETED", states: "Tamil Nadu, Rajasthan, Chhattisgarh, Madhya Pradesh, etc.", constituencies: 102 },
   { phase: 2, date: "April 26, 2024", status: "COMPLETED", states: "Kerala, Karnataka, Rajasthan, Uttar Pradesh, etc.", constituencies: 88 },
   { phase: 3, date: "May 7, 2024", status: "COMPLETED", states: "Gujarat, Karnataka, Maharashtra, Uttar Pradesh, etc.", constituencies: 94 },
-  { phase: 4, date: "May 13, 2024", status: "UPCOMING", states: "Andhra Pradesh, Telangana, Uttar Pradesh, West Bengal, etc.", constituencies: 96 },
-  { phase: 5, date: "May 20, 2024", status: "SCHEDULED", states: "Maharashtra, Uttar Pradesh, West Bengal, Bihar, etc.", constituencies: 49 },
-  { phase: 6, date: "May 25, 2024", status: "SCHEDULED", states: "Delhi, Haryana, Uttar Pradesh, West Bengal, etc.", constituencies: 58 },
-  { phase: 7, date: "June 1, 2024", status: "SCHEDULED", states: "Uttar Pradesh, Punjab, West Bengal, Himachal Pradesh, etc.", constituencies: 57 },
+  { phase: 4, date: "May 13, 2024", status: "COMPLETED", states: "Andhra Pradesh, Telangana, Uttar Pradesh, West Bengal, etc.", constituencies: 96 },
+  { phase: 5, date: "May 20, 2024", status: "COMPLETED", states: "Maharashtra, Uttar Pradesh, West Bengal, Bihar, etc.", constituencies: 49 },
+  { phase: 6, date: "May 25, 2024", status: "COMPLETED", states: "Delhi, Haryana, Uttar Pradesh, West Bengal, etc.", constituencies: 58 },
+  { phase: 7, date: "June 1, 2024", status: "COMPLETED", states: "Uttar Pradesh, Punjab, West Bengal, Himachal Pradesh, etc.", constituencies: 57 },
 ];
 
 export default function TimelinePage() {
   return (
     <div className="max-w-4xl mx-auto px-4 py-16">
+      {/* Election Result Banner */}
+      <motion.div 
+        initial={{ opacity: 0, scale: 0.95 }}
+        animate={{ opacity: 1, scale: 1 }}
+        className="mb-12 p-6 bg-green-50 border-2 border-green-200 rounded-2xl flex flex-col md:flex-row items-center justify-between gap-6"
+      >
+        <div className="flex items-center gap-4">
+          <div className="w-12 h-12 bg-green-500 rounded-full flex items-center justify-center text-white shrink-0">
+            <CheckCircle2 size={24} />
+          </div>
+          <div className="text-left">
+            <span className="px-2 py-0.5 bg-green-200 text-green-800 text-[10px] font-bold rounded-full uppercase tracking-widest">Final Outcome</span>
+            <h2 className="text-xl font-bold text-slate-900 mt-1">Results Declared: June 4, 2024</h2>
+            <p className="text-sm text-slate-600">BJP-led NDA wins with 293 seats</p>
+          </div>
+        </div>
+        <div className="px-4 py-2 bg-white border border-green-200 rounded-xl font-bold text-green-600 text-sm">
+          Election Cycle Completed
+        </div>
+      </motion.div>
+
       <div className="text-center mb-16">
         <h1 className="text-3xl font-bold text-slate-900 mb-4">Lok Sabha Election 2024 Timeline</h1>
-        <p className="text-slate-500">Track the world&apos;s largest democratic exercise through seven strategic phases.</p>
+        <p className="text-slate-500">The world&apos;s largest democratic exercise has concluded.</p>
       </div>
 
       <div className="relative">

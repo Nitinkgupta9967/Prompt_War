@@ -10,14 +10,32 @@ export default function LookupPage() {
 
   const handleSearch = async () => {
     if (!epic) return;
+    
+    // Demo Mock for ABC1234567
+    if (epic.toUpperCase() === 'ABC1234567') {
+      setResult({
+        name: "Rahul Sharma",
+        epic: "ABC1234567",
+        assembly: "New Delhi (01)",
+        state: "Delhi",
+        parliament: "New Delhi (GEN)",
+        polling_station: "Govt. Sr. Sec. School, Connaught Place",
+        address: "Booth No. 142, Sector 4, New Delhi",
+        travel_time: "12 Mins (Walk)"
+      });
+      return;
+    }
+
     try {
       const data = await lookupVoter({ epic });
-      setResult({
-        ...data,
-        assembly: data.constituency,
-        parliament: "New Delhi (GEN)", // Still mocked
-        travel_time: "12 Mins (Walk)" // Still mocked
-      });
+      if (data) {
+        setResult({
+          ...data,
+          assembly: data.constituency || "Unknown",
+          parliament: "New Delhi (GEN)", 
+          travel_time: "12 Mins (Walk)"
+        });
+      }
     } catch (error) {
       console.error(error);
     }
@@ -54,6 +72,9 @@ export default function LookupPage() {
             >
               <MapPin size={20} /> Find My Booth
             </button>
+            <p className="text-[10px] text-center text-slate-400 mt-4">
+              This is a demo. For real lookup visit <a href="https://voters.eci.gov.in" target="_blank" rel="noopener noreferrer" className="underline hover:text-[var(--navy)]">voters.eci.gov.in</a>
+            </p>
           </div>
 
           <div className="card border-l-4 border-l-[var(--saffron)] bg-slate-50">

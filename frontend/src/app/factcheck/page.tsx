@@ -4,8 +4,12 @@ import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { ShieldAlert, CheckCircle, HelpCircle, Search, Info, ExternalLink } from 'lucide-react';
 import { factCheckClaim } from '@/lib/api';
+import { useLanguage } from '@/lib/LanguageContext';
+import { translations } from '@/lib/i18n';
 
 export default function FactCheckPage() {
+  const { lang } = useLanguage();
+  const t = translations[lang];
   const [claim, setClaim] = useState('');
   const [result, setResult] = useState<any>(null);
   const [isLoading, setIsLoading] = useState(false);
@@ -41,17 +45,17 @@ export default function FactCheckPage() {
         <div className="lg:col-span-2 space-y-8">
           {/* Input Card */}
           <div className="card">
-            <h3 className="font-bold mb-4">Verify a Claim</h3>
+            <h3 className="font-bold mb-4">{t.factcheck_title}</h3>
             <div className="relative">
               <textarea 
                 value={claim}
                 onChange={(e) => setClaim(e.target.value)}
-                placeholder="Paste a claim or news about the election here..."
+                placeholder="Paste a claim or WhatsApp forward to verify..."
                 className="w-full bg-slate-50 border-slate-200 rounded-xl p-4 min-h-[120px] text-sm focus:ring-2 focus:ring-[var(--navy)] transition-all"
               />
               <button 
                 onClick={handleCheck}
-                disabled={isLoading || !claim}
+                disabled={isLoading}
                 className="absolute bottom-4 right-4 btn-primary py-2 px-4 text-xs disabled:opacity-50"
               >
                 {isLoading ? 'Checking...' : 'Verify Now'}

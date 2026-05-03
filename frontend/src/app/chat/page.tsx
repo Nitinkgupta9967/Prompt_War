@@ -93,14 +93,14 @@ export default function ChatPage() {
             Our AI provides real-time information sourced directly from official electoral databases.
           </p>
           <div className="space-y-2">
-            <button className="w-full flex items-center justify-between p-2 rounded-lg bg-slate-50 hover:bg-slate-100 text-xs font-medium transition-all">
+            <a href="https://eci.gov.in/acts-rules/" target="_blank" rel="noopener noreferrer" className="w-full flex items-center justify-between p-2 rounded-lg bg-slate-50 hover:bg-slate-100 text-xs font-medium transition-all">
               <span className="flex items-center gap-2"><FileText size={14} /> Election Laws 2024</span>
               <ExternalLink size={12} />
-            </button>
-            <button className="w-full flex items-center justify-between p-2 rounded-lg bg-slate-50 hover:bg-slate-100 text-xs font-medium transition-all">
+            </a>
+            <a href="https://eci.gov.in/evm/" target="_blank" rel="noopener noreferrer" className="w-full flex items-center justify-between p-2 rounded-lg bg-slate-50 hover:bg-slate-100 text-xs font-medium transition-all">
               <span className="flex items-center gap-2"><Info size={14} /> EVM Verification Guide</span>
               <ExternalLink size={12} />
-            </button>
+            </a>
           </div>
         </div>
         
@@ -160,6 +160,16 @@ export default function ChatPage() {
                     : 'bg-[var(--navy)] text-white shadow-lg'
                 }`}>
                   {m.content}
+                  
+                  {m.role === 'assistant' && (
+                    <div className="mt-3 pt-3 border-t border-slate-100 flex items-center gap-2">
+                      <span className="px-1.5 py-0.5 bg-slate-100 text-slate-500 text-[9px] font-bold rounded uppercase">Verified</span>
+                      <a href="https://eci.gov.in" target="_blank" rel="noopener noreferrer" className="text-[9px] text-[var(--navy)] font-bold flex items-center gap-0.5 hover:underline">
+                        Source: Election Commission of India <ExternalLink size={10} />
+                      </a>
+                    </div>
+                  )}
+
                   <div className={`text-[10px] mt-2 opacity-50 ${m.role === 'user' ? 'text-right' : ''}`} suppressHydrationWarning>
                     {m.timestamp.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
                   </div>
@@ -185,7 +195,7 @@ export default function ChatPage() {
         {/* Input Area */}
         <div className="p-4 bg-white border-t border-slate-100">
           <div className="flex flex-wrap gap-2 mb-4">
-            {suggestions.map(s => (
+            {[t.suggest_1, t.suggest_2, t.suggest_3, t.suggest_4].map(s => (
               <button 
                 key={s}
                 onClick={() => setInput(s)}
