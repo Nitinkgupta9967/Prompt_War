@@ -17,16 +17,16 @@ export default function Footer() {
           </div>
           
           <div className="flex flex-wrap gap-8 text-sm text-slate-600 justify-center">
-            <a href="https://eci.gov.in" target="_blank" rel="noopener noreferrer" className="hover:text-[var(--navy)]">ECI Portal</a>
-            <a href="https://voters.eci.gov.in" target="_blank" rel="noopener noreferrer" className="hover:text-[var(--navy)]">NVSP</a>
-            <a href="tel:1950" className="hover:text-[var(--navy)]">Voter Helpline (1950)</a>
-            <Link href="/privacy" className="hover:text-[var(--navy)]">Privacy Policy</Link>
-            <Link href="/terms" className="hover:text-[var(--navy)]">Terms</Link>
+            <a href="https://eci.gov.in" target="_blank" rel="noopener noreferrer" className="hover:text-[var(--navy)] font-medium">ECI Portal</a>
+            <a href="https://voters.eci.gov.in" target="_blank" rel="noopener noreferrer" className="hover:text-[var(--navy)] font-medium">National Voter Portal</a>
+            <a href="tel:1950" className="hover:text-[var(--navy)] font-medium">Voter Helpline: 1950</a>
+            <Link href="/privacy" className="hover:text-[var(--navy)] font-medium">Privacy Policy</Link>
+            <Link href="/terms" className="hover:text-[var(--navy)] font-medium">Terms of Use</Link>
           </div>
         </div>
         
         <div className="mt-8 pt-8 border-t border-slate-100 text-center text-xs text-slate-400">
-          © 2024 VoteSmart India. Not affiliated with the Election Commission of India.
+          © {new Date().getFullYear()} VoteSmart India. Not affiliated with the Election Commission of India. Official data sourced from eci.gov.in.
         </div>
       </div>
     </footer>

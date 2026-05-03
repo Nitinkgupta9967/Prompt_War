@@ -92,8 +92,8 @@ export default function Home() {
                 Official Electoral Awareness Portal
               </div>
               <h1 className="text-4xl md:text-6xl font-extrabold text-slate-900 leading-tight mb-6">
-                {t.hero_title.split('Indian')[0]} <br/>
-                <span className="text-[var(--saffron)]">Indian {t.hero_title.split('Indian')[1]}</span>
+                Empowering Every <br/>
+                <span className="text-[var(--saffron)]">Indian Voter</span>
               </h1>
               <p className="text-lg text-slate-600 mb-8 max-w-lg">
                 Navigate the democratic process with clarity. Get verified information, election timelines, and personalized AI assistance for Indian Elections.
@@ -150,7 +150,7 @@ export default function Home() {
                 <div className={`p-3 rounded-xl ${feature.color} mb-6`}>
                   <feature.icon size={24} />
                 </div>
-                <h3 className="text-xl font-bold text-slate-900 mb-3">{t[feature.title as keyof typeof t]}</h3>
+                <h3 className="text-xl font-bold text-slate-900 mb-3">{feature.id === 'timeline' ? 'Election Timeline' : feature.id === 'lookup' ? 'Booth Finder' : t[feature.title as keyof typeof t]}</h3>
                 <p className="text-slate-600 text-sm mb-6 flex-grow">{feature.desc}</p>
                 <Link href={feature.link} className="flex items-center gap-2 text-sm font-bold text-[var(--navy)] hover:gap-3 transition-all">
                   {feature.linkText}
@@ -169,7 +169,7 @@ export default function Home() {
             <div className="max-w-xl">
               <h2 className="text-2xl font-bold mb-4">Trust In Every Data Point</h2>
               <p className="text-slate-300 text-sm leading-relaxed">
-                Our platform uses real-time API integrations with official Election Commission of India databases. Every bit of information is cross-referenced for 100% accuracy.
+                Our platform is grounded in official Election Commission of India (ECI) datasets. Every bit of information is verified against government records for 100% accuracy and non-partisan clarity.
               </p>
             </div>
             
