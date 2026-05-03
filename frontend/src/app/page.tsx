@@ -89,21 +89,21 @@ export default function Home() {
             >
               <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-orange-50 text-orange-700 text-xs font-semibold mb-6 border border-orange-100">
                 <span className="w-2 h-2 rounded-full bg-orange-500 animate-pulse" />
-                Official Electoral Awareness Portal
+                Official ECI Data Portal
               </div>
               <h1 className="text-4xl md:text-6xl font-extrabold text-slate-900 leading-tight mb-6">
                 Empowering Every <br/>
                 <span className="text-[var(--saffron)]">Indian Voter</span>
               </h1>
-              <p className="text-lg text-slate-600 mb-8 max-w-lg">
+              <p className="text-lg text-slate-600 mb-8 max-w-lg leading-relaxed">
                 Navigate the democratic process with clarity. Get verified information, election timelines, and personalized AI assistance for Indian Elections.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
-                <Link href="/chat" className="btn-primary">
+                <Link href="/chat" className="btn-primary px-8">
                   {t.start_chatting}
                   <MessageSquare size={18} />
                 </Link>
-                <Link href="/lookup" className="btn-secondary">
+                <Link href="/lookup" className="btn-secondary px-8">
                   {t.check_status}
                 </Link>
               </div>
@@ -121,7 +121,6 @@ export default function Home() {
                   className="w-full h-full object-cover"
                 />
               </div>
-              {/* Floating badges could go here */}
             </motion.div>
           </div>
         </div>
@@ -145,12 +144,14 @@ export default function Home() {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ delay: idx * 0.1 }}
                 viewport={{ once: true }}
-                className="card flex flex-col items-start text-left"
+                className="card flex flex-col items-start text-left group hover:border-[var(--saffron)] transition-all duration-300"
               >
-                <div className={`p-3 rounded-xl ${feature.color} mb-6`}>
+                <div className={`p-3 rounded-xl ${feature.color} mb-6 group-hover:scale-110 transition-transform`}>
                   <feature.icon size={24} />
                 </div>
-                <h3 className="text-xl font-bold text-slate-900 mb-3">{feature.id === 'timeline' ? 'Election Timeline' : feature.id === 'lookup' ? 'Booth Finder' : t[feature.title as keyof typeof t]}</h3>
+                <h3 className="text-xl font-bold text-slate-900 mb-3">
+                  {feature.id === 'timeline' ? 'Election Timeline' : feature.id === 'lookup' ? 'Booth Finder' : t[feature.title as keyof typeof t]}
+                </h3>
                 <p className="text-slate-600 text-sm mb-6 flex-grow">{feature.desc}</p>
                 <Link href={feature.link} className="flex items-center gap-2 text-sm font-bold text-[var(--navy)] hover:gap-3 transition-all">
                   {feature.linkText}
@@ -166,31 +167,31 @@ export default function Home() {
       <section className="bg-[var(--navy)] py-16 text-white overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col md:flex-row justify-between items-center gap-12">
-            <div className="max-w-xl">
+            <div className="max-w-xl text-center md:text-left">
               <h2 className="text-2xl font-bold mb-4">Trust In Every Data Point</h2>
               <p className="text-slate-300 text-sm leading-relaxed">
                 Our platform is grounded in official Election Commission of India (ECI) datasets. Every bit of information is verified against government records for 100% accuracy and non-partisan clarity.
               </p>
             </div>
             
-            <div className="flex gap-12 items-center">
+            <div className="flex flex-wrap justify-center gap-12 items-center">
               <div className="flex flex-col items-center gap-2">
                 <div className="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center">
                   <ShieldCheck size={24} className="text-[var(--saffron)]" />
                 </div>
-                <span className="text-xs font-medium">Data Encryption</span>
+                <span className="text-xs font-medium uppercase tracking-wider">Verified Source</span>
               </div>
               <div className="flex flex-col items-center gap-2">
                 <div className="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center">
                   <Award size={24} className="text-[var(--saffron)]" />
                 </div>
-                <span className="text-xs font-medium">Non-Partisan</span>
+                <span className="text-xs font-medium uppercase tracking-wider">Non-Partisan</span>
               </div>
               <div className="flex flex-col items-center gap-2">
                 <div className="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center">
                   <Calendar size={24} className="text-[var(--saffron)]" />
                 </div>
-                <span className="text-xs font-medium">Official ECI Data</span>
+                <span className="text-xs font-medium uppercase tracking-wider">Official ECI Data</span>
               </div>
             </div>
           </div>
