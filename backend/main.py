@@ -1,3 +1,7 @@
+"""
+VoteSmart India - Backend API
+Main entry point for the FastAPI application providing electoral information and AI chat services.
+"""
 from fastapi import FastAPI, Request, Depends, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from sqlalchemy.future import select
@@ -36,13 +40,17 @@ async def health():
     return {"status": "ok", "service": "votesmart-india"}
 
 @app.post("/api/chat")
-async def chat(req: ChatRequest, db: AsyncSession = Depends(get_db)):
+async def chat_with_ai(request: ChatRequest, db: AsyncSession = Depends(get_db)):
+    """
+    Core AI Chat endpoint. Uses a Retrieval-Augmented Generation (RAG) approach 
+    to provide grounded answers based on official ECI FAQs.
+    """
     # 1. Search Knowledge Base
-    faqs = await search_faqs(req.message, db)
+    faqs = await search_faqs(request.message, db)
     context = "\n".join([f"Q: {f.question} A: {f.answer}" for f in faqs[:3]])
     
     # 2. Get AI Response
-    response = await get_ai_response(req.message, context)
+    response = await get_ai_response(request.message, context)
     
     return {
         "response": response,
