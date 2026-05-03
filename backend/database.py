@@ -2,7 +2,7 @@ from sqlalchemy.ext.asyncio import create_async_engine, AsyncSession
 from sqlalchemy.orm import sessionmaker, declarative_base
 import os
 
-DATABASE_URL = os.environ.get("DATABASE_URL", "sqlite+aiosqlite:///./votesmart.db")
+DATABASE_URL = os.environ.get("DATABASE_URL", "sqlite+aiosqlite:////tmp/votesmart.db")
 
 engine = create_async_engine(DATABASE_URL, echo=True)
 AsyncSessionLocal = sessionmaker(

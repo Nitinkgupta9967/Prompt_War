@@ -54,6 +54,14 @@ async def chat_with_ai(request: ChatRequest, db: AsyncSession = Depends(get_db))
     Core AI Chat endpoint. Uses a Retrieval-Augmented Generation (RAG) approach 
     to provide grounded answers based on official ECI FAQs.
     """
+    # Safety Check: Ensure tables exist
+    try:
+        faqs = await search_faqs(request.message, db)
+    except Exception:
+        await init_db()
+        await seed_data()
+        faqs = await search_faqs(request.message, db)
+
     # 1. Search Knowledge Base
     faqs = await search_faqs(request.message, db)
     context = "\n".join([f"Q: {f.question} A: {f.answer}" for f in faqs[:3]])
