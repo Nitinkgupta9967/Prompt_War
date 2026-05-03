@@ -3,7 +3,6 @@ uvicorn[standard]
 sqlalchemy
 asyncpg
 aioredis
-google-generativeai
 bleach
 slowapi
 sentence-transformers
@@ -13,3 +12,4 @@ python-dotenv
 pytest
 httpx
 aiosqlite
+aiohttp
