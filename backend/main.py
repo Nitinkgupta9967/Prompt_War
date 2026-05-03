@@ -20,8 +20,11 @@ app = FastAPI(title="VoteSmart India API")
 # CORS
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],
-    allow_credentials=True,
+    allow_origins=[
+        "https://votesmart-web-99378412040.europe-west1.run.app",
+        "http://localhost:3000"
+    ],
+    allow_credentials=False,
     allow_methods=["*"],
     allow_headers=["*"],
 )
