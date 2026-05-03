@@ -150,7 +150,7 @@ export default function ChatPage() {
                     : 'bg-[var(--navy)] text-white shadow-lg'
                 }`}>
                   {m.content}
-                  <div className={`text-[10px] mt-2 opacity-50 ${m.role === 'user' ? 'text-right' : ''}`}>
+                  <div className={`text-[10px] mt-2 opacity-50 ${m.role === 'user' ? 'text-right' : ''}`} suppressHydrationWarning>
                     {m.timestamp.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
                   </div>
                 </div>
