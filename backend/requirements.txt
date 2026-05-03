@@ -13,3 +13,5 @@ pytest
 httpx
 aiosqlite
 aiohttp
+anthropic
+openai
