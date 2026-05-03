@@ -6,7 +6,7 @@ import {
   Send, Bot, User, Trash2, Settings, ExternalLink, 
   ShieldCheck, Info, FileText, ChevronRight, Search 
 } from 'lucide-react';
-import { sendMessage } from '@/lib/api';
+import { chatWithAI } from '@/lib/api';
 import { useLanguage } from '@/lib/LanguageContext';
 import { translations } from '@/lib/i18n';
 
@@ -53,7 +53,7 @@ export default function ChatPage() {
     setIsLoading(true);
 
     try {
-      const response = await sendMessage(input);
+      const response = await chatWithAI(input, userMessage.id, lang);
       const assistantMessage: Message = {
         id: (Date.now() + 1).toString(),
         role: 'assistant',
