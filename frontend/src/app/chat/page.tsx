@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Send, Bot, User, Trash2, Settings, Info, ExternalLink, Paperclip, ShieldCheck, FileText } from 'lucide-react';
 import { useLanguage } from '@/lib/LanguageContext';
 import { translations } from '@/lib/i18n';
+import { chatWithAI } from '@/lib/api';
 
 interface Message {
   id: string;
@@ -50,17 +51,26 @@ export default function ChatPage() {
     setInput('');
     setIsLoading(true);
 
-    // Mocking AI response for now
-    setTimeout(() => {
+    try {
+      const data = await chatWithAI(input, 'session-123', lang);
       const aiMessage: Message = {
-        id: (Date.now() + 1).toString(),
+        id: Date.now().toString(),
         role: 'assistant',
-        content: 'You can check your name in the electoral roll using the official NVSP portal at electoralsearch.in or by using the Voter Helpline App.',
+        content: data.response,
         timestamp: new Date()
       };
       setMessages(prev => [...prev, aiMessage]);
+    } catch (error) {
+      const errorMessage: Message = {
+        id: Date.now().toString(),
+        role: 'assistant',
+        content: 'I apologize, but I am having trouble connecting to my knowledge base right now. Please try again in a moment.',
+        timestamp: new Date()
+      };
+      setMessages(prev => [...prev, errorMessage]);
+    } finally {
       setIsLoading(false);
-    }, 1500);
+    }
   };
 
   const suggestions = [

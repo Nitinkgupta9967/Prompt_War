@@ -2,23 +2,25 @@
 
 import React, { useState } from 'react';
 import { Search, MapPin, Phone, ExternalLink, Printer } from 'lucide-react';
+import { lookupVoter } from '@/lib/api';
 
 export default function LookupPage() {
   const [epic, setEpic] = useState('');
   const [result, setResult] = useState<any>(null);
 
-  const handleSearch = () => {
+  const handleSearch = async () => {
     if (!epic) return;
-    // Mock result
-    setResult({
-      name: "Rahul Sharma",
-      epic: "ZKC0984532",
-      assembly: "165 - Malviya Nagar",
-      parliament: "New Delhi (GEN)",
-      polling_station: "Govt. Senior Secondary School, Block B",
-      address: "Room No. 4, Ground Floor, Sarvodaya Enclave, New Delhi - 110017",
-      travel_time: "12 Mins (Walk)"
-    });
+    try {
+      const data = await lookupVoter({ epic });
+      setResult({
+        ...data,
+        assembly: data.constituency,
+        parliament: "New Delhi (GEN)", // Still mocked
+        travel_time: "12 Mins (Walk)" // Still mocked
+      });
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   return (

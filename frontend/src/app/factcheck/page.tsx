@@ -3,6 +3,7 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { ShieldAlert, CheckCircle, HelpCircle, Search, Info, ExternalLink } from 'lucide-react';
+import { factCheckClaim } from '@/lib/api';
 
 export default function FactCheckPage() {
   const [claim, setClaim] = useState('');
@@ -13,23 +14,18 @@ export default function FactCheckPage() {
     if (!claim.trim()) return;
     setIsLoading(true);
     
-    // Mocking API call
-    setTimeout(() => {
-      if (claim.toLowerCase().includes('reward') || claim.toLowerCase().includes('5000')) {
-        setResult({
-          verdict: 'FAKE',
-          explanation: 'This claim is entirely baseless. The Election Commission of India (ECI) does not provide monetary rewards for voting. Such claims are often part of phishing scams designed to collect personal bank details from unsuspecting citizens.',
-          source: 'Election Commission of India Official Notification'
-        });
-      } else {
-        setResult({
-          verdict: 'MISLEADING',
-          explanation: 'The claim contains partial truths but omits critical context that changes the overall meaning.',
-          source: 'ECI Press Release'
-        });
-      }
+    try {
+      const data = await factCheckClaim(claim);
+      setResult(data);
+    } catch (error) {
+      setResult({
+        verdict: 'UNVERIFIED',
+        explanation: 'Connection error. Please try again later.',
+        source: 'System'
+      });
+    } finally {
       setIsLoading(false);
-    }, 1000);
+    }
   };
 
   return (

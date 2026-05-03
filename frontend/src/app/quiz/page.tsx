@@ -3,27 +3,25 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Check, X, ArrowRight, Info, Award } from 'lucide-react';
-
-const questions = [
-  {
-    id: 1,
-    question: "Which Article of the Indian Constitution grants the Election Commission of India the power of superintendence, direction, and control of elections?",
-    options: [
-      { id: 'A', text: 'Article 324' },
-      { id: 'B', text: 'Article 311' },
-      { id: 'C', text: 'Article 356' },
-      { id: 'D', text: 'Article 370' }
-    ],
-    correct: 'A',
-    insight: "Article 324 is the cornerstone of India's electoral democracy. It ensures that the Election Commission operates as an autonomous constitutional body, free from executive interference."
-  }
-];
+import { getQuizQuestions } from '@/lib/api';
 
 export default function QuizPage() {
+  const [questions, setQuestions] = React.useState<any[]>([]);
   const [currentIdx, setCurrentIdx] = useState(0);
   const [selected, setSelected] = useState<string | null>(null);
   const [isAnswered, setIsAnswered] = useState(false);
   const [score, setScore] = useState(0);
+  const [loading, setLoading] = useState(true);
+
+  React.useEffect(() => {
+    getQuizQuestions(10).then(data => {
+      setQuestions(data);
+      setLoading(false);
+    });
+  }, []);
+
+  if (loading) return <div className="p-20 text-center">Loading quiz...</div>;
+  if (questions.length === 0) return <div className="p-20 text-center">No questions found.</div>;
 
   const q = questions[currentIdx];
 
@@ -31,7 +29,7 @@ export default function QuizPage() {
     if (isAnswered) return;
     setSelected(id);
     setIsAnswered(true);
-    if (id === q.correct) setScore(score + 1);
+    if (id === q.correct_option) setScore(score + 1);
   };
 
   return (
