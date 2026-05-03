@@ -67,7 +67,7 @@ const features = [
     desc: 'Download essential forms, voter guides, and official handbooks directly from the Election Commission.',
     icon: FileText,
     color: 'bg-slate-100 text-slate-600',
-    link: 'https://eci.gov.in/voter/voter-guide/',
+    link: 'https://eci.gov.in/eci-content/documents/',
     linkText: 'Download'
   }
 ];
@@ -96,7 +96,7 @@ export default function Home() {
                 <span className="text-[var(--saffron)]">Indian {t.hero_title.split('Indian')[1]}</span>
               </h1>
               <p className="text-lg text-slate-600 mb-8 max-w-lg">
-                {t.hero_desc}
+                Navigate the democratic process with clarity. Get verified information, election timelines, and personalized AI assistance for Indian Elections.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
                 <Link href="/chat" className="btn-primary">

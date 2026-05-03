@@ -5,43 +5,56 @@
 [![FastAPI](https://img.shields.io/badge/FastAPI-0.100+-009688.svg)](https://fastapi.tiangolo.com/)
 [![AI-Powered](https://img.shields.io/badge/AI-Powered-blueviolet)](https://openrouter.ai/)
 
-**VoteSmart India** is a premium, AI-driven platform designed to empower Indian citizens with accurate, official, and accessible electoral information. Built for the 2024 General Elections and beyond, it combines real-time AI assistance with verified ECI data to combat misinformation and promote civic awareness.
+**VoteSmart India** is a premium, AI-driven platform designed to empower Indian citizens with accurate, official, and accessible electoral information. It combines real-time AI assistance with verified ECI data to combat misinformation and promote civic awareness.
+
+### 🚀 **Live Demo**: [votesmart-web-99378412040.europe-west1.run.app](https://votesmart-web-99378412040.europe-west1.run.app)
+
+---
+
+## 📸 Screenshots
+
+| Homepage | AI Chat Assistant |
+| :---: | :---: |
+| ![Homepage](https://raw.githubusercontent.com/Nitinkgupta9967/Prompt_War/main/screenshots/home.png) | ![Chat](https://raw.githubusercontent.com/Nitinkgupta9967/Prompt_War/main/screenshots/chat.png) |
+
+| Fact-Check Engine | Civic Quiz |
+| :---: | :---: |
+| ![FactCheck](https://raw.githubusercontent.com/Nitinkgupta9967/Prompt_War/main/screenshots/factcheck.png) | ![Quiz](https://raw.githubusercontent.com/Nitinkgupta9967/Prompt_War/main/screenshots/quiz.png) |
 
 ---
 
 ## 🌟 Key Features
 
-### 🤖 AI Electoral Assistant
-*   **Context-Aware Chat**: Powered by Gemini/Claude via OpenRouter, grounded in official ECI guidelines.
-*   **Bilingual Support**: Full support for English and Hindi (Toggleable).
-*   **Robust Fallback**: Multi-model fallback system (Llama 3.1, Claude 3.5) ensures 99.9% availability.
-
-### 🔍 Verified Tools
-*   **Voter Lookup & Booth Finder**: Real-time constituency and polling station search simulation.
-*   **Fact-Check Engine**: Instant verification of viral claims and election news.
-*   **Interactive Election Timeline**: 7-phase roadmap of the 2024 General Elections.
-
-### 🎓 Civic Engagement
-*   **Civic Awareness Quiz**: Test your election knowledge with expert insights.
-*   **Pre-Vote Checklist**: Step-by-step preparation guide for voters.
+- **🤖 AI Electoral Assistant**: Context-aware chat grounded in official ECI guidelines with bilingual support (English/Hindi).
+- **🔍 Verified Fact-Checker**: Instant verification of viral claims using a dedicated election misinformation database.
+- **🗺️ Booth Finder**: Real-time constituency and polling station search with mock data for demonstrations.
+- **📅 Election Timeline**: Interactive roadmap of the polling phases and results.
+- **🎓 Civic Quiz**: Engaging proficiency tests to educate voters on their rights and the voting process.
 
 ---
 
-## 🛠️ Tech Stack
+## 🏗️ Architecture
 
-- **Frontend**: Next.js 14 (App Router), Tailwind CSS v4, Framer Motion, Lucide React.
-- **Backend**: FastAPI (Python 3.12), SQLAlchemy (Async), SQLite.
-- **AI/LLM**: OpenRouter API (Llama 3.1 / Gemini), Anthropic API (Fallback).
-- **Deployment**: Docker-ready, optimized for Google Cloud Run / Vercel.
+```mermaid
+graph TD
+    User((User)) --> NextJS[Next.js 14 Frontend]
+    NextJS --> FastAPI[FastAPI Backend]
+    FastAPI --> SQLite[(SQLite DB /tmp)]
+    FastAPI --> OpenRouter[OpenRouter AI Engine]
+    OpenRouter --> Claude[Claude 3.5 Sonnet]
+    OpenRouter --> Gemini[Gemini 1.5 Pro]
+    FastAPI --> RAG[RAG System / Official ECI Docs]
+```
+
+### Tech Stack
+- **Frontend**: Next.js 14 (App Router), Tailwind CSS v4, Framer Motion.
+- **Backend**: FastAPI (Python 3.12), SQLAlchemy (Async).
+- **Database**: SQLite (Ephemeral for Cloud Run).
+- **Deployment**: Google Cloud Run (Containerized).
 
 ---
 
 ## 🚀 Getting Started
-
-### Prerequisites
-- Node.js 20+
-- Python 3.11+
-- API Keys: OpenRouter or Anthropic
 
 ### 1. Clone & Setup
 ```bash
@@ -55,15 +68,6 @@ cd backend
 python -m venv .venv
 source .venv/bin/activate  # On Windows: .venv\Scripts\activate
 pip install -r requirements.txt
-
-# Create .env and add your keys
-echo "OPENROUTER_API_KEY=your_key_here" > .env
-echo "ANTHROPIC_API_KEY=your_key_here" >> .env
-
-# Initialize Database
-python startup.py
-
-# Start Server
 uvicorn main:app --reload
 ```
 
@@ -74,33 +78,10 @@ npm install
 npm run dev
 ```
 
-Visit `http://localhost:3000` to see the app!
-
----
-
-## 🏗️ Architecture
-
-```text
-votesmart-india/
-├── frontend/           # Next.js 14 Web Application
-│   ├── src/app/        # Pages and Routing
-│   ├── src/components/ # Reusable UI Components
-│   └── src/lib/        # API Clients and Context
-├── backend/            # FastAPI Python API
-│   ├── data/           # Seed JSON data (FAQs, Misinfo)
-│   ├── models.py       # Database Schemas
-│   ├── rag.py          # AI Logic & Fallback System
-│   └── main.py         # API Endpoints
-└── Dockerfile          # Production ready containers
-```
-
 ---
 
 ## 📜 License
 Distributed under the MIT License. See `LICENSE` for more information.
-
-## 🤝 Contributing
-Contributions are what make the open-source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
 
 ---
 *Disclaimer: This platform is for educational and awareness purposes. Always verify official details at [voters.eci.gov.in](https://voters.eci.gov.in).*
