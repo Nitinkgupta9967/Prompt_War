@@ -1,0 +1,18 @@
+[
+  {
+    "id": "faq-1",
+    "question": "How do I register to vote?",
+    "answer": "You can register to vote by filling Form 6 on the Voter Portal (voters.eci.gov.in) or using the Voter Helpline App.",
+    "category": "registration",
+    "language": "en",
+    "source": "ECI"
+  },
+  {
+    "id": "faq-2",
+    "question": "What is an EPIC number?",
+    "answer": "EPIC stands for Electors Photo Identification Card. It is the unique number mentioned on your Voter ID card.",
+    "category": "documents",
+    "language": "en",
+    "source": "ECI"
+  }
+]

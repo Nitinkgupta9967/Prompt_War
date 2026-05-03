@@ -1,0 +1,15 @@
+fastapi
+uvicorn[standard]
+sqlalchemy
+asyncpg
+aioredis
+anthropic
+bleach
+slowapi
+sentence-transformers
+pgvector
+pydantic-settings
+python-dotenv
+pytest
+httpx
+aiosqlite

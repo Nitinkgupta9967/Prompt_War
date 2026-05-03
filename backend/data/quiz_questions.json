@@ -1,0 +1,14 @@
+[
+  {
+    "question": "Which Article of the Indian Constitution grants the Election Commission of India the power of superintendence?",
+    "options": {
+      "A": "Article 324",
+      "B": "Article 311",
+      "C": "Article 356",
+      "D": "Article 370"
+    },
+    "correct": "A",
+    "explanation": "Article 324 is the cornerstone of India's electoral democracy.",
+    "topic": "Constitutional Law"
+  }
+]
