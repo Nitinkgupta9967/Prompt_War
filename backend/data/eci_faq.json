@@ -14,5 +14,29 @@
     "category": "documents",
     "language": "en",
     "source": "ECI"
+  },
+  {
+    "id": "faq-3",
+    "question": "What is NOTA?",
+    "answer": "NOTA stands for 'None of the Above'. It is an option on the EVM that allows a voter to officially register a vote of rejection for all candidates who are contesting.",
+    "category": "voting",
+    "language": "en",
+    "source": "ECI"
+  },
+  {
+    "id": "faq-4",
+    "question": "How does an EVM work?",
+    "answer": "An Electronic Voting Machine (EVM) consists of two units: a Control Unit and a Balloting Unit. When a voter presses a button against a candidate's name, the vote is recorded in the Control Unit.",
+    "category": "technology",
+    "language": "en",
+    "source": "ECI"
+  },
+  {
+    "id": "faq-5",
+    "question": "Can I vote without a Voter ID card?",
+    "answer": "Yes, if your name is in the electoral roll, you can vote by showing any of the 12 alternative photo identity documents approved by the ECI, such as Aadhaar Card, PAN Card, or Passport.",
+    "category": "id",
+    "language": "en",
+    "source": "ECI"
   }
 ]
