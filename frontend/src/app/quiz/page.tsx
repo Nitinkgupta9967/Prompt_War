@@ -65,7 +65,7 @@ export default function QuizPage() {
             </h2>
 
             <div className="space-y-4">
-              {q.options.map(opt => (
+              {q.options.map((opt: { id: string; text: string }) => (
                 <button
                   key={opt.id}
                   onClick={() => handleSelect(opt.id)}

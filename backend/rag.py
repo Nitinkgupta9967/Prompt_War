@@ -39,13 +39,13 @@ async def get_ai_response(message: str, context: str):
     system_prompt = """You are VoteSmart AI, a helpful election guide for India. 
     Use the provided context from the ECI to answer questions. If not in context, use general knowledge but advise verifying on eci.gov.in."""
 
-    # 1. Try OpenRouter
+    # 1. Try OpenRouter (Verified 2026 IDs)
     if or_client:
-        # Try a few free models in order of capability
         models_to_try = [
-            "google/gemini-2.0-flash-exp:free",
-            "meta-llama/llama-3.1-8b-instruct:free",
-            "mistralai/mistral-7b-instruct:free"
+            "openrouter/free", # Verified ID
+            "google/gemma-3-12b-it:free", # Verified ID
+            "meta-llama/llama-3.3-70b-instruct:free", # Verified ID
+            "meta-llama/llama-3.2-3b-instruct:free" # Verified ID
         ]
         
         for model in models_to_try:
@@ -56,15 +56,17 @@ async def get_ai_response(message: str, context: str):
                         {"role": "system", "content": system_prompt},
                         {"role": "user", "content": f"Context:\n{context}\n\nQuestion: {message}"}
                     ],
-                    timeout=10
+                    timeout=15
                 )
-                return completion.choices[0].message.content
+                if completion.choices[0].message.content:
+                    return completion.choices[0].message.content
             except Exception as e:
                 print(f"OpenRouter {model} failed: {str(e)}")
 
-    # 2. Try Anthropic direct
+    # 2. Try Anthropic direct (If OpenRouter fails)
     if ant_client:
-        models_to_try = ["claude-3-5-sonnet-20240620", "claude-3-haiku-20240307", "claude-2.1"]
+        # Tries standard IDs
+        models_to_try = ["claude-3-opus-20240229", "claude-3-sonnet-20240229", "claude-2.1"]
         for model in models_to_try:
             try:
                 response = await ant_client.messages.create(
@@ -77,4 +79,4 @@ async def get_ai_response(message: str, context: str):
             except Exception as e:
                 print(f"Anthropic {model} failed: {str(e)}")
 
-    return "All AI services failed. Please try again later."
+    return "All AI services failed. Please check your API keys and project settings. Visit eci.gov.in for official info."
